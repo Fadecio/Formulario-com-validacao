@@ -1,47 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const formulario = document.querySelector('.formulario');
-    const campos = formulario.querySelectorAll('input, textarea');
+const camposFormulario = document.querySelector('.formulario'); // Procura na página um elemento com a classe .formulario (que provavelmente é o <form>) e guarda esse elemento na variável camposFormulario.
 
-    campos.forEach(campo => {
-        campo.addEventListener('input', () => {
-            const mensagemErro = campo.nextElementSibling;
-            if (campo.value.trim() === '') {
-                campo.classList.remove('sucesso');
-                campo.classList.add('erro');
-                mensagemErro.style.display = 'block';
-            } else {
-                campo.classList.remove('erro');
-                campo.classList.add('sucesso');
-                mensagemErro.style.display = 'none';
-            }
-        });
-    });
 
-    formulario.addEventListener('submit', (e) => {
+const campos = camposFormulario.querySelectorAll('input, textarea'); // Dentro do formulario, pega todos os campos <input> e <textarea> e guarda na variável campos. Ou seja, campos é uma lista de campos que o usuário vai preencher.
 
-        let valido = true;
+camposFormulario.addEventListener('submit', function (e) { //Quando a pessoa clicar no botão de enviar (submit) do formulário, essa função vai ser chamada.
+    e.preventDefault(); // Impede que o formulário seja enviado de verdade. Assim, o JavaScript pode primeiro verificar se os campos estão preenchidos
 
-        campos.forEach(campo => {
-            const mensagemErro = campo.nextElementSibling;
-            if (campo.value.trim() === '') {
-                campo.classList.add('erro');
-                campo.classList.remove('sucesso');
-                mensagemErro.style.display = 'block';
-                valido = false;
-            }
-        });
+    campos.forEach(campo => { // Para cada campo (input ou textarea) na lista campos, vai executar a função abaixo.
 
-        if (!valido) {
-            e.preventDefault();
+        const mensagemErro = campo.nextElementSibling; // Pega o próximo elemento que vem logo depois do campo no HTML. Esse próximo elemento é onde vai aparecer a mensagem de erro.
+
+        if (campo.value.trim() === '') { // Verifica se o campo está vazio (sem nada, nem espaço).
+            campo.classList.add('nao-preenchido'); // Adiciona a classe nao-preenchido no campo, talvez para mudar a cor ou a borda, mostrando que está vazio.
+            mensagemErro.style.display = 'block'; // Faz a mensagem de erro aparecer.
         } else {
-            alert('Formulário enviado com sucesso!');
-            formulario.reset();
-
-            campos.forEach(campo => {
-                campo.classList.remove('erro', 'sucesso');
-                const mensagemErro = campo.nextElementSibling;
-                mensagemErro.style.display = 'none';
-            });
+            campo.classList.add('preenchido'); // Adiciona a classe preenchido ao campo, talvez para indicar visualmente que ele está certo.
+            campo.classList.remove('nao-preenchido'); // Tira a classe nao-preenchido caso ela tenha sido colocada antes.
+            mensagemErro.style.display = 'none'; // Esconde a mensagem de erro, porque o campo está preenchido.
         }
-    });
-});
+    })
+})
+
+/* ✅ Resumo:
+Esse código impede que o formulário seja enviado sem que todos os campos estejam preenchidos, e ainda mostra ou esconde mensagens de erro conforme o usuário preenche ou deixa vazio. */

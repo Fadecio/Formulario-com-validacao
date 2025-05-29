@@ -72,20 +72,13 @@ section {
 
 }
 
-.formulario span {
-    font-weight: 500;
-    font-size: 15px;
-}
-
-input.preenchido,
-textarea.preenchido {
+input.preenchido, textarea.preenchido {
 
     border: 2px solid green;
 
 }
 
-input.nao-preenchido,
-textarea.nao-preenchido {
+input.nao-preenchido, textarea.nao-preenchido {
 
     border: 2px solid red;
 
@@ -95,7 +88,7 @@ textarea.nao-preenchido {
 
     color: red;
     font-size: 12px;
-    visibility: hidden;
+    display: none;
 }
 
 .formulario textarea {
