@@ -1,5 +1,5 @@
 html {
-    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
 }
 
@@ -9,10 +9,12 @@ body {
     align-items: center;
     background-color: #c4c4c4;
     min-height: 100%;
+    padding: 10px;
 }
 
-main {
+section {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background-image: url(../imagem/bg-repeat.jpg);
@@ -22,14 +24,17 @@ main {
 }
 
 .informacao {
+
     width: 300px;
     height: 111px;
     margin-left: 50px;
     margin-right: 60px;
     color: #fff;
+
 }
 
 .informacao h1 {
+
     font-size: 20px;
     font-weight: 900;
     text-transform: uppercase;
@@ -37,40 +42,66 @@ main {
 }
 
 .informacao p {
+
     font-size: 15px;
     font-weight: 400;
+
 }
 
 .formulario {
+
     width: 340px;
     height: 378px;
-    margin: 12px 50px 12px 10px;
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
+    display: grid;
+    margin: 0 auto;
+
 }
 
 .formulario input,
 .formulario textarea {
+
     border: 2px solid #ccc;
     border-radius: 5px;
     width: 100%;
     height: 35px;
-    margin-bottom: 10px;
     padding: 10px;
+    font-weight: 700;
+    font-size: 15px;
+
 }
 
-input.sucesso,
-textarea.sucesso {
-    border: 2px solid green !important;
+.formulario span {
+    font-weight: 500;
+    font-size: 15px;
 }
 
-input.erro,
-textarea.erro {
-    border: 2px solid red !important;
+input.preenchido,
+textarea.preenchido {
+
+    border: 2px solid green;
+
+}
+
+input.nao-preenchido,
+textarea.nao-preenchido {
+
+    border: 2px solid red;
+
+}
+
+.erro-mensagem {
+
+    color: red;
+    font-size: 12px;
+    visibility: hidden;
 }
 
 .formulario textarea {
+
     height: 100px;
+    resize: none;
 
 }
 
@@ -82,14 +113,17 @@ textarea.erro {
     color: #fff;
     border: none;
     border-radius: 5px;
-    width: 100%;
+    width: 298px;
     height: 41px;
     font-size: 15px;
     font-weight: 700;
+    margin: 0 auto;
     cursor: pointer;
-    margin-top: 10px;
 }
 
+
 .enviar:hover {
-    background-color: #1ead68;
+
+    background-color: #5de8a5;
+    transition: 0.3s;
 }
